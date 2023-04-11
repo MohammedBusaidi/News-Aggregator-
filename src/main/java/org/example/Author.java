@@ -1,5 +1,5 @@
 package org.example;
 
-public class Author extends Doc {
+public class Author{
     String original;
 }
