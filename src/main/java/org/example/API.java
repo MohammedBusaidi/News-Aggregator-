@@ -6,10 +6,14 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class API {
-    SearchResponse searchResponse;
+    static Article article;
+    static ArrayList<Article> articleList = new ArrayList<>();
+
+
     public void getData() {
         Scanner sc = new Scanner(System.in);
         System.out.println("What are you searching for?");
@@ -33,8 +37,8 @@ public class API {
             }
             conn.disconnect();
             Gson gson = new Gson();
-            searchResponse = gson.fromJson(json.toString(), SearchResponse.class);
-                    for (Doc doc : searchResponse.response.docs) {
+            article = gson.fromJson(json.toString(), Article.class);
+                    for (Doc doc : article.response.docs) {
                         System.out.println("=======================================");
                         System.out.println(doc.headline.main);
                         System.out.println(doc.byline.original);
@@ -43,6 +47,7 @@ public class API {
                         System.out.println(doc.pub_date);
                         System.out.println("=======================================");
                     }
+            articleList.add(article);
         } catch (Exception e) {
             e.printStackTrace();
         }

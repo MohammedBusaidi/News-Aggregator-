@@ -1,5 +1,5 @@
 package org.example;
 
-public class SearchResponse {
+public class Article {
     Response response;
 }

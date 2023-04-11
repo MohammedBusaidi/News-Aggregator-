@@ -13,6 +13,7 @@ public class Main {
         API newApi = new API();
         JDBC newJdbc = new JDBC();
         newApi.getData();
+        newJdbc.createTable();
         newJdbc.insertData();
     }
 
