@@ -33,7 +33,7 @@ public class Main {
         }
     }
     private static SearchResponse getData(String search) {
-        String apiUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=football&api-key=gd5lZIkC8L1AzTXCJS4yqjS3ukFok7W4";
+        String apiUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q="+ search +"&api-key=gd5lZIkC8L1AzTXCJS4yqjS3ukFok7W4";
         try {
             URL url = new URL(apiUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
