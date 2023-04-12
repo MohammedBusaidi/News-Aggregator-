@@ -95,7 +95,6 @@ public class JDBC {
             String searchBy = scanner.next();
             String sql = "SELECT * FROM articles WHERE category = '" + searchBy + "'";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, searchBy);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 String title = rs.getString("article_title");
