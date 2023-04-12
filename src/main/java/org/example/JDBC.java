@@ -86,15 +86,35 @@ public class JDBC {
             DriverManager.registerDriver(driver);
 
             con = DriverManager.getConnection(url, user, pass);
-            Statement st = con.createStatement();
-
             url += ";databaseName=" + databaseName;
             con = DriverManager.getConnection(url, user, pass);
             Scanner scanner = new Scanner(System.in);
             System.out.println("Enter the category you want to search for: ");
             String searchBy = scanner.next();
-            String sql = "SELECT * FROM articles WHERE category = '" + searchBy + "'";
+            String sortBy = "";
+            boolean validOption = false;
+            while (!validOption) {
+                System.out.println("Select a sorting option:");
+                System.out.println("1. Sort by date");
+                System.out.println("2. Sort by article title");
+                int option = scanner.nextInt();
+                switch (option) {
+                    case 1:
+                        sortBy = "date DESC";
+                        validOption = true;
+                        break;
+                    case 2:
+                        sortBy = "article_title ASC";
+                        validOption = true;
+                        break;
+                    default:
+                        System.out.println("Invalid option, please try again");
+                        break;
+                }
+            }
+            String sql = "SELECT * FROM articles WHERE category = ? ORDER BY " + sortBy;
             PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, searchBy);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 String title = rs.getString("article_title");
@@ -114,4 +134,5 @@ public class JDBC {
             System.err.println(ex);
         }
     }
+
 }
