@@ -23,14 +23,15 @@ public class JDBC {
             String sql = "IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'articles')\n"
                     + "BEGIN\n"
                     + "CREATE TABLE articles(\n"
-                    + "article_title VARCHAR(150),\n"
-                    + "author VARCHAR(150),\n"
-                    + "date VARCHAR(150),\n"
-                    + "category VARCHAR(150),\n"
-                    + "content VARCHAR(150)\n"
+                    + "article_title VARCHAR(MAX),\n"
+                    + "author VARCHAR(MAX),\n"
+                    + "date VARCHAR(MAX),\n"
+                    + "category VARCHAR(MAX),\n"
+                    + "content VARCHAR(MAX)\n"
                     + ");\n"
                     + "END\n";
             st.executeUpdate(sql);
+            System.out.println("TABLE CREATED!");
         } catch (Exception ex) {
             System.err.println(ex);
         }

@@ -39,12 +39,11 @@ public class API {
             Gson gson = new Gson();
             article = gson.fromJson(json.toString(), Article.class);
                     for (Doc doc : article.response.docs) {
-                        System.out.println("=======================================");
-                        System.out.println(doc.headline.main);
-                        System.out.println(doc.byline.original);
-                        System.out.println(doc.section_name);
-                        System.out.println(doc.lead_paragraph);
-                        System.out.println(doc.pub_date);
+                        System.out.println("Title: " + doc.headline.main);
+                        System.out.println("Author: " + doc.byline.original);
+                        System.out.println("Date: " + doc.pub_date);
+                        System.out.println("Category: " + doc.section_name);
+                        System.out.println("Content: " + doc.lead_paragraph);
                         System.out.println("=======================================");
                     }
             articleList.add(article);
