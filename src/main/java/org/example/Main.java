@@ -15,6 +15,7 @@ public class Main {
         newApi.getData();
         newJdbc.createTable();
         newJdbc.insertData();
+        newJdbc.searchData();
     }
 
 }
