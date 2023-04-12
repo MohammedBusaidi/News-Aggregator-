@@ -6,4 +6,5 @@ public class Doc {
     String pub_date;
     String section_name;
     Headline headline;
+
 }

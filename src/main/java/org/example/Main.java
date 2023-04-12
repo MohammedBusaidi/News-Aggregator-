@@ -16,6 +16,8 @@ public class Main {
         newJdbc.createTable();
         newJdbc.insertData();
         newJdbc.searchData();
+        newApi.mostPopular();
+
     }
 
 }
